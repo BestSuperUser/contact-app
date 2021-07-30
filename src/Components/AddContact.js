@@ -26,7 +26,7 @@ const AddContact = () => {
             toast.error("Phone number already exists")
             return
         } else {
-            const id = state.contactList[state.contactList.length-1].id + 1
+            const id = state.contactList.length !== 0 ? state.contactList[state.contactList.length-1].id + 1 : 0
             const CONTACT_INFO = {
                 id: id,
                 email: email.toString(),

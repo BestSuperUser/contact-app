@@ -26,7 +26,10 @@ const INITIAL_STATE = {
 export const reducer = (state = INITIAL_STATE, action) => {
     switch (action.type) {
         case "ADD_CONTACT":
-            return {...state, contactList: [...state.contactList, action.paylaod]}
+            return {...state, contactList: [...state.contactList, action.payload]}
+        case "DELETE_CONTACT":
+            state.contactList = state.contactList.filter((contact) => contact.id !== action.payload && contact)
+            return state
         default:
             return state;
     }

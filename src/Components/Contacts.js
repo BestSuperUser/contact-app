@@ -1,8 +1,11 @@
-import {useSelector} from "react-redux"
+import {useSelector, useDispatch} from "react-redux"
 import {Link} from "react-router-dom"
+import { deleteContact } from "../redux/action/action"
 
 const Contacts = () => {
     const contactList = useSelector(state => state.contactList)
+    const dispatch = useDispatch()
+
     return (
         <div className="row p-0 m-0">
             <div className="col-8 offset-2 mt-4">
@@ -16,7 +19,7 @@ const Contacts = () => {
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone Number</th>
-                        <th></th>
+                        <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,7 +31,7 @@ const Contacts = () => {
                             <td>{contact.phoneNumber}</td>
                             <td>
                                 <button className="btn btn-outline-primary">Edit</button>
-                                <button className="btn btn-outline-danger ms-3">Delete</button>
+                                <button className="btn btn-outline-danger ms-3" onClick={() => dispatch(deleteContact(contact.id))}>Delete</button>
                             </td>
                             </tr>
                         )}
